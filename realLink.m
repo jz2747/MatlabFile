@@ -1,0 +1,21 @@
+CenterHoleR = 1.5;
+followHoleR = 0.8;
+Halfstroke = 4.3;
+Margin = 1.2;
+R = Halfstroke + followHoleR + Margin;
+cutB = 3;
+cutT = 1.5;
+HeightT = 6.5;
+emuPoint = 10;
+
+A = [-cutB 0];
+an = linspace(pi,2*pi, emuPoint)';
+B = [R*cos(an) R*sin(an)];
+C = [cutB 0; cutT HeightT; 0 HeightT];
+cir = linspace(pi/2, -3*pi/2, emuPoint)';
+D = [followHoleR*cos(cir) Halfstroke+followHoleR*sin(cir)];
+E = [0 HeightT; -cutT HeightT; -cutB 0];
+cir2 = linspace(pi, -pi, 10)';
+F = [CenterHoleR*cos(cir2) CenterHoleR*sin(cir2)];
+line = [A;B;C;D;E;F];
+plot(line(:,1), line(:,2));
